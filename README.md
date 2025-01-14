@@ -1,3 +1,0 @@
-# times_series_segmentation_tool
-
-Hello
