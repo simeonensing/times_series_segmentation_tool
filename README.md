@@ -1,120 +1,157 @@
-# Setting Up the Environment with Conda
+# MindAble Biosignal Time Series Segmentation Software
 
-This guide explains how to set up your development environment using Conda and the provided `environment.yaml` file. Conda is a package manager that simplifies the management of dependencies and virtual environments.
+## Overview
 
-## Prerequisites
+This software is designed for **segmenting biosignal time series data into intervals, then labelling said intervals**. It supports the following file formats:
 
-Before proceeding, ensure you have the following installed:
+- `.fif`
+- `.edf`
+- `.bdf`
+- `.gdf`
+- `.set`
+
+### Key Features
+- Segmentation of time series data into intervals.
+- Labeling cropped intervals.
+
+---
+
+## Installation
+
+### Prerequisites
+
+Ensure you have the following installed:
 
 1. **Conda**: Install either [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or [Anaconda](https://www.anaconda.com/).
-2. **Git** (optional): Required if you need to clone this repository.
+2. **Git** (optional): Required if you want to clone this repository instead of downloading the ZIP.
 
-## Steps to Set Up the Environment
+---
 
-### 1. Clone the Repository (Optional)
+### Setup Instructions
 
-If this project is in a Git repository, clone it using the following command:
+#### 1. Download the Repository
 
-```bash
-git clone https://github.com/simeonensing/times_series_segmentation_tool.git
-cd <repository-folder>
-```
+- **Option A: Clone the Repository**
 
-### 2. Locate the `environment.yaml` File
+  - **Conda Terminal (Windows)**:  
+    We recommend using the **Conda terminal** (Anaconda Prompt or Miniconda Prompt) on Windows for managing environments and running Conda commands.
+    ```bash
+    git clone https://github.com/simeonensing/times_series_segmentation_tool.git
+    cd times_series_segmentation_tool
+    ```
 
-Ensure the `environment.yaml` file is in the root directory of the project. This file contains all the dependencies and configurations needed for the environment.
+  - **Bash/Unix-like Terminals (Linux/macOS)**:
+    ```bash
+    git clone https://github.com/simeonensing/times_series_segmentation_tool.git
+    cd times_series_segmentation_tool
+    ```
 
-### 3. Create the Conda Environment
+  - **PowerShell (Windows)**:
+    ```powershell
+    git clone https://github.com/simeonensing/times_series_segmentation_tool.git
+    Set-Location -Path times_series_segmentation_tool
+    ```
 
-Run the following command to create the environment:
+- **Option B: Download as ZIP**
 
-```bash
-conda env create -f environment.yaml
-```
+  1. Download the ZIP file from GitHub.
+  2. Extract the ZIP file to a directory of your choice.
+  3. Open a terminal and navigate to the extracted folder:
+  
+     - **Conda Terminal (Windows)**:
+       ```bash
+       cd path\to\extracted\folder
+       ```
 
-This command reads the `environment.yaml` file and installs the required dependencies into a new environment.
+     - **Bash/Unix-like Terminals (Linux/macOS)**:
+       ```bash
+       cd path/to/extracted/folder
+       ```
 
-### 4. Activate the Environment
+     - **PowerShell (Windows)**:
+       ```powershell
+       Set-Location -Path "path\to\extracted\folder"
+       ```
 
-Once the environment is created, activate it using:
+#### 2. Create the Conda Environment
 
-```bash
-conda activate <environment-name>
-```
+1. Ensure the `environment.yml` file is in the root directory.
+2. Create the environment:
+   ```bash
+   conda env create -f environment.yml
+   ```
 
-Replace `<environment-name>` with the name specified in the `name` field of the `environment.yaml` file. You can also find the environment name in the `environment.yaml` file under the `name` key.
+3. Activate the environment:
+   - **Conda Terminal (Windows)**:
+     ```bash
+     conda activate segmentation_tool_env
+     ```
+   - **Bash/Unix-like Terminals (Linux/macOS)**:
+     ```bash
+     conda activate segmentation_tool_env
+     ```
+   - **PowerShell (Windows)**:
+     ```powershell
+     conda activate segmentation_tool_env
+     ```
 
-### 5. Verify the Installation
+4. Verify installation by listing installed packages:
+   ```bash
+   conda list
+   ```
 
-Check that the required dependencies are installed by running:
+---
 
-```bash
-conda list
-```
+## Usage
 
-You can also run any specific commands or scripts to ensure the setup is complete (e.g., `python --version` or `pytest` for running tests).
+### Running the Software
 
-### 6. Deactivating the Environment
+1. Activate the Conda environment (if not already activated):
 
-To deactivate the environment after use, run:
+   - **Conda Terminal (Windows)**:
+     ```bash
+     conda activate segmentation_tool_env
+     ```
 
-```bash
-conda deactivate
-```
+   - **Bash/Unix-like Terminals (Linux/macOS)**:
+     ```bash
+     conda activate segmentation_tool_env
+     ```
+
+   - **PowerShell (Windows)**:
+     ```powershell
+     conda activate segmentation_tool_env
+     ```
+
+2. Run the main script:
+   ```bash
+   python main.py 
+   ```
+
+---
 
 ## Updating the Environment
 
-If the `environment.yaml` file changes (e.g., new dependencies are added), update your environment with:
-
+If new dependencies are added to the `environment.yml` file, update your environment:
 ```bash
-conda env update -f environment.yaml --prune
+conda env update -f environment.yml --prune
 ```
 
-The `--prune` flag removes dependencies that are no longer required.
+---
 
-## Removing the Environment
+## Troubleshooting
 
-If you no longer need the environment, remove it with:
+### Common Issues
 
-```bash
-conda remove --name <environment-name> --all
-```
+1. **Environment Already Exists**:  
+   Remove the existing environment:
+   ```bash
+   conda remove --name <environment-name> --all
+   ```
 
-Replace `<environment-name>` with the name of the environment you want to delete.
-
-## Common Issues
-
-1. **"Environment already exists" Error**:
-   - If the environment already exists, you can remove it first using:
-     ```bash
-     conda remove --name <environment-name> --all
-     ```
-
-2. **Package Conflicts**:
-   - Ensure your `environment.yaml` specifies compatible versions of packages. Refer to the documentation of individual packages for compatibility details.
-
-## Example `environment.yaml`
-
-Here is an example of what the `environment.yaml` file might look like:
-
-```yaml
-name: my_project_env
-channels:
-  - conda-forge
-  - defaults
-dependencies:
-  - python=3.9
-  - numpy
-  - pandas
-  - matplotlib
-  - scipy
-  - scikit-learn
-  - pip:
-      - some-python-package
-```
+---
 
 ## Additional Resources
 
 - [Conda Documentation](https://docs.conda.io/en/latest/)
 - [Managing Conda Environments](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
-
