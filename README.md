@@ -16,7 +16,7 @@ Before proceeding, ensure you have the following installed:
 If this project is in a Git repository, clone it using the following command:
 
 ```bash
-git clone <repository-url>
+git clone <[repository-url](https://github.com/simeonensing/times_series_segmentation_tool.git)>
 cd <repository-folder>
 ```
 
