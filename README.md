@@ -75,13 +75,36 @@ Ensure you have the following installed:
 
 #### 2. Create the Conda Environment
 
-1. Ensure the `environment.yml` file is in the root directory.
-2. Create the environment:
+1. **Check that you are in the project root directory:**
+
+   - **On macOS/Linux** (using the terminal):
+     ```bash
+     pwd
+     ```
+   - **On Windows** (using PowerShell or Conda terminal):
+     ```powershell
+     echo %cd%
+     ```
+
+   Ensure you're in the correct directory where the `environment.yml` file is located.
+
+2. **Ensure the `environment.yml` file is in the root directory:**
+
+   - **On macOS/Linux** (using the terminal):
+     ```bash
+     ls
+     ```
+   - **On Windows** (using PowerShell or Conda terminal):
+     ```powershell
+     dir
+     ```
+
+3. Create the environment:
    ```bash
    conda env create -f environment.yml
    ```
 
-3. Activate the environment:
+4. Activate the environment:
    - **Conda Terminal (Windows)**:
      ```bash
      conda activate segmentation_tool_env
@@ -95,7 +118,7 @@ Ensure you have the following installed:
      conda activate segmentation_tool_env
      ```
 
-4. Verify installation by listing installed packages:
+5. Verify installation by listing installed packages:
    ```bash
    conda list
    ```
